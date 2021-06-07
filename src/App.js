@@ -6,13 +6,31 @@ import Validator from "./Validator";
 import {useState} from "react";
 import {HTMLHint} from "htmlhint";
 
+// const w3cjs = require("w3cjs")
+
 function App() {
   const [code, setCode] = useState('')
   const [HTMLHintErrors, setHTMLHintErrors] = useState(HTMLHint.verify(code, HTMLHint.rules))
+  // const [W3CJSErrors, setW3CJSErrors] = useState(w3cjs.validate({
+  //   input: code,
+  //   output: 'json',
+  //   callback: function (err, res) {
+  //     console.log(res)
+  //     // setW3CJSErrors(res.messages)
+  //   }
+  // }))
 
   function onChange(newValue) {
     setCode(newValue)
     setHTMLHintErrors(HTMLHint.verify(newValue, HTMLHint.rules))
+    // w3cjs.validate({
+    //   input: newValue,
+    //   output: 'json',
+    //   callback: function (err, res) {
+    //     console.log(res.messages)
+    //     // setW3CJSErrors(res.messages)
+    //   }
+    // })
   }
 
   return (
