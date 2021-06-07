@@ -1,0 +1,7 @@
+.validator {
+    flex: 50%;
+}
+
+.errors {
+    border: 1px solid black;
+}

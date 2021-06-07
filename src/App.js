@@ -1,23 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import AceEditor from "react-ace"
+import "ace-builds/src-noconflict/mode-html"
+import "ace-builds/src-noconflict/theme-xcode"
+import Validator from "./Validator";
+import {useState} from "react";
 
 function App() {
+  const [code, setCode] = useState('')
+
+  function onChange(newValue) {
+    setCode(newValue)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AceEditor
+        mode={"html"}
+        theme={"xcode"}
+        debounceChangePeriod={300}
+        onChange={onChange}
+        name={"editor"}
+        defaultValue={"<!DOCTYPE html><body></body>"}
+      />
+      <div className={"validators"}>
+        <Validator name={"HTMLHint"}/>
+        <Validator name={"W3C (Nu)"}/>
+        <Validator name={"HTML-validate"}/>
+        <Validator name={"htmllint"}/>
+      </div>
     </div>
   );
 }
