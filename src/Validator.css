@@ -4,4 +4,11 @@
 
 .errors {
     border: 1px solid black;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.error_div {
+    padding: 10px 0 10px 0;
+    border-bottom: 4px solid green;
 }
